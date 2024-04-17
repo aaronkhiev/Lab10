@@ -15,7 +15,7 @@
 	 		  Execute the SQL query using the pdo function and fetch the result
 	 */
 
-	 $sign_id = $_GET['sign'];
+	 $sign = $_GET['sign'];
 
 	 $sql = "SELECT zodiac.name, zodiac.birthday, zodiac.imgSrc,
 	 		horoscope.moodRating, horoscope.successRating, horoscope.loveRating, horoscope.description
@@ -23,7 +23,7 @@
 			JOIN horoscope ON zodiac.ID = horoscope.ID
 			WHERE zodiac.name= :sign;";
 
-	$zodiac = pdo($pdo, $sql, ['name' => $sign_id])->fetch();
+	$zodiac = pdo($pdo, $sql, ['sign' => $sign])->fetch();
 	
 	// Check if the cookie 'details_' . $sign is not set
 	if (!isset($_COOKIE['details_' . $sign])) {
