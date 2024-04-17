@@ -7,27 +7,10 @@
 	   TO-DO: Write SQL query to retrieve ALL info on the zodiac signs
 	 		  Execute the SQL query using the pdo function and fetch the result
 	 */
-	function get_zodiac(PDO $pdo, int $id) {
+	$sql = "SELECT *
+		FROM zodiac";
 
-		// SQL query to retrieve toy information based on the toy ID
-		$sql = "SELECT * 
-			FROM zodiac
-			WHERE ID= :id;";	// :id is a placeholder for value provided later 
-		                               // It's a parameterized query that helps prevent SQL injection attacks and ensures safer interaction with the database.
-
-
-		// Execute the SQL query using the pdo function and fetch the result
-		$zodiac = pdo($pdo, $sql, ['id' => $id])->fetch();		// Associative array where 'id' is the key and $id is the value. Used to bind the value of $id to the placeholder :id in  SQL query.
-
-		// Return the toy information (associative array)
-		return $zodiac;
-	}
-	$zodiac1 = get_zodiac($pdo, 1);
-	$zodiac1 = get_zodiac($pdo, 1);
-	$zodiac1 = get_zodiac($pdo, 1);
-	$zodiac1 = get_zodiac($pdo, 1);
-	$zodiac1 = get_zodiac($pdo, 1);
-
+	$zodiac = pdo($pdo, $sql) -> fetchAll();
 ?> 
 
 <!DOCTYPE>
@@ -86,7 +69,7 @@
 
 				<div class="horoscope">
 					<!-- Create a hyperlink to horoscope.php page with sign as parameter -->
-					<a href="horoscope.php?sign=<?= $zodiac[0]['ID'] ?>">
+					<a href="horoscope.php?sign=<?= $zodiac[0]['name'] ?>">
 						<!-- Display image of zodiac with its name as alt text -->
 						<img src="<?= $zodiac[0]['imgSrc'] ?>" alt="<?= $zodiac[0]['name'] ?>">
 					</a>
