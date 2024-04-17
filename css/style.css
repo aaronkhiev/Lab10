@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../imgs/background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* 
+  Custom CSS Loader
+  eclipse loader by Oli
+  Link:  https://codepen.io/olidafrog/pen/BWQYLv
+ */
+.wrapper {
+  margin: 400px auto;
+}
+
+div.oval {
+  width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 0 0 #fff;
+    position:relative;
+    left:50%;
+    animation:eclipse 2.5s ease-in-out infinite;
+}
+
+.oval:after {
+    height:50px;
+    content:"";
+    display:block;
+    border-right:1px solid #fff;
+    position:relative;
+    top:-40px;
+    left:-40px;
+    animation:line 2.5s ease-in-out infinite;
+}
+
+@keyframes line {
+    0% {transform:translate(0,0);opacity:0;}
+    20% {transform:translate(0,50px);opacity:1;}
+    100% {opacity:0;}
+}
+
+.oval:before {
+    height:20px;
+    width:20px;
+    content:"";
+    display:block;
+    border-radius:20px;
+    background:white;
+    position:relative;
+    left:30px;
+    top:60px;
+    animation:planet 2.5s ease-in-out infinite;         
+}
+
+@keyframes planet {
+    0% {opacity:0;}
+    20% {transform:translate(0,0) scale(1,1);opacity:1;}
+    100% {transform:translate(0,-100px) scale(0,0);opacity:0;}
+}
+
+
+@keyframes eclipse {
+    0% {box-shadow: 0px 5px 0 0 #fff;}
+    70%{box-shadow: 0px 0px 0 0 #fff;opacity:1;}
+    100%{box-shadow: 0px 0px 0 0 #fff;opacity:0;}
+}
+/* 
+  End of Custom CSS Loader
+  eclipse loader by Oli
+  Link:  https://codepen.io/olidafrog/pen/BWQYLv
+ */
+
+ /* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+}
+
+header {
+  background-color: #240c38;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 100px;
+  height: 75px;
+  padding-right: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+nav ul li a:hover {
+  text-decoration: none;
+  color: #e52e57;
+}
+
+.header-right ul {
+  list-style-type: none;
+}
+
+.header-right ul li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.header-right ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.header-right ul li a:hover {
+  text-decoration: none;
+  color: #e52e57;
+}
+
+ h1 {
+  font-family: "Press Start 2P", sans-serif;
+  color: #9445b6;
+  text-align:  center;
+ }
+
+#content {
+  display: block; 
+  margin: 50px auto;
+  max-width: 1000px;
+  min-height: 100px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+/* Center the horoscopes row */
+.horoscopes-row {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+
+.horoscope {
+    text-align: center;
+    margin: 0 10px;
+    flex: 1 0 calc(33.33% - 20px);
+}
+
+.horoscope img {
+    max-width: 75px;
+    margin-bottom: 10px;
+}
+
+#horoscope-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.horoscope-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.horoscope-header {
+    margin-right: 20px;
+}
+
+.horoscope-header img {
+    max-width: 100px;
+    height: auto;
+}
+
+.horoscope-description {
+    text-align: center;
+}
+
+.checked {
+    color: gold;
+}
+
+/* Style for the star ratings */
+.star-rating::before {
+    content: '★';
+    font-size: 20px;
+}
+
+/* Additional styles for list items */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Add new classes for specific styling */
+.horoscope-info {
+    margin-bottom: 20px; /* Add some space between horoscope info and description */
+}
+
+.horoscope-info img {
+    border-radius: 50%;
+    border: 2px solid #240c38; /* Add a border around the horoscope image */
+}
+
+.horoscope-info h2 {
+    color: #240c38; /* Change horoscope name color */
+}
+
+.horoscope-ratings ul {
+    margin-top: 10px; /* Add some space between ratings and description */
+}
+
+form {
+  text-align: right;
+  width: max-content;
+  margin: 0 auto;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+input {
+  padding: 4px;
+  font-size: 1em;
+  display: inline-block;
+}
+
+input[type='submit'] {
+  background-color: #9869c6;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Press Start 2P", sans-serif;
+  margin-top: 10px;
+}
+
+input[type='submit']:hover {
+  cursor: pointer;
+  background-color: #240c38;
+}
