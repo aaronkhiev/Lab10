@@ -21,7 +21,7 @@
 	 		horoscope.moodRating, horoscope.successRating, horoscope.loveRating, horoscope.description
 			FROM zodiac
 			JOIN horoscope ON zodiac.ID = horoscope.ID
-			WHERE toy.toynum= :id;";
+			WHERE zodiac.name= :name;";
 
 	$zodiac = pdo($pdo, $sql, ['name' => $sign_id])->fetch();
 	
