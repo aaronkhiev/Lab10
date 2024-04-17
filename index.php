@@ -23,6 +23,10 @@
 		return $zodiac;
 	}
 	$zodiac1 = get_zodiac($pdo, 1);
+	$zodiac1 = get_zodiac($pdo, 1);
+	$zodiac1 = get_zodiac($pdo, 1);
+	$zodiac1 = get_zodiac($pdo, 1);
+	$zodiac1 = get_zodiac($pdo, 1);
 
 ?> 
 
@@ -82,14 +86,14 @@
 
 				<div class="horoscope">
 					<!-- Create a hyperlink to horoscope.php page with sign as parameter -->
-					<a href="horoscope.php?sign=<?= $zodiac['ID'] ?>">
+					<a href="horoscope.php?sign=<?= $zodiac[0]['ID'] ?>">
 						<!-- Display image of zodiac with its name as alt text -->
-						<img src="<?= $zodiac['imgSrc'] ?>" alt="<?= $zodiac['name'] ?>">
+						<img src="<?= $zodiac[0]['imgSrc'] ?>" alt="<?= $zodiac[0]['name'] ?>">
 					</a>
 					<!-- Display name of zodiac sign -->
-					<h3><?= $zodiac['name'] ?></h3>
+					<h3><?= $zodiac[0]['name'] ?></h3>
 					<!-- Display birthday range of zodiac sign -->
-					<p><?= $zodiac['birthday'] ?></p>
+					<p><?= $zodiac[0]['birthday'] ?></p>
 				</div>
 
     			<div class="horoscope">
