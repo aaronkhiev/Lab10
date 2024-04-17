@@ -7,7 +7,7 @@
 	   TO-DO: Write SQL query to retrieve ALL info on the zodiac signs
 	 		  Execute the SQL query using the pdo function and fetch the result
 	 */
-	function get_toy(PDO $pdo, int $id) {
+	function get_zodiac(PDO $pdo, int $id) {
 
 		// SQL query to retrieve toy information based on the toy ID
 		$sql = "SELECT * 
@@ -22,7 +22,7 @@
 		// Return the toy information (associative array)
 		return $zodiac;
 	}
-	$zodiac1 = get_toy($pdo, 1);
+	$zodiac1 = get_zodiac($pdo, 1);
 
 ?> 
 
