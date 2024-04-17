@@ -7,6 +7,22 @@
 	   TO-DO: Write SQL query to retrieve ALL info on the zodiac signs
 	 		  Execute the SQL query using the pdo function and fetch the result
 	 */
+	function get_toy(PDO $pdo, int $id) {
+
+		// SQL query to retrieve toy information based on the toy ID
+		$sql = "SELECT * 
+			FROM zodiac
+			WHERE ID= :id;";	// :id is a placeholder for value provided later 
+		                               // It's a parameterized query that helps prevent SQL injection attacks and ensures safer interaction with the database.
+
+
+		// Execute the SQL query using the pdo function and fetch the result
+		$zodiac = pdo($pdo, $sql, ['id' => $id])->fetch();		// Associative array where 'id' is the key and $id is the value. Used to bind the value of $id to the placeholder :id in  SQL query.
+
+		// Return the toy information (associative array)
+		return $zodiac;
+	}
+	$zodiac1 = get_toy($pdo, 1);
 
 ?> 
 
@@ -66,14 +82,14 @@
 
 				<div class="horoscope">
 					<!-- Create a hyperlink to horoscope.php page with sign as parameter -->
-					<a href="horoscope.php?sign=<?= '' ?>">
+					<a href="horoscope.php?sign=<?= $zodiac['ID'] ?>">
 						<!-- Display image of zodiac with its name as alt text -->
-						<img src="<?= '' ?>" alt="<?= '' ?>">
+						<img src="<?= $zodiac['imgSrc'] ?>" alt="<?= $zodiac['name'] ?>">
 					</a>
 					<!-- Display name of zodiac sign -->
-					<h3><?= '' ?></h3>
+					<h3><?= $zodiac['name'] ?></h3>
 					<!-- Display birthday range of zodiac sign -->
-					<p><?= '' ?></p>
+					<p><?= $zodiac['birthday'] ?></p>
 				</div>
 
     			<div class="horoscope">
