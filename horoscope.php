@@ -15,7 +15,15 @@
 	 		  Execute the SQL query using the pdo function and fetch the result
 	 */
 
+	 $sign_id = $_GET['name'];
 
+	 $sql = "SELECT zodiac.name, zodiac.birthday, zodiac.imgSrc,
+	 		horoscope.moodRating, horoscope.successRating, horoscope.loveRating, horoscope.description
+			FROM zodiac
+			JOIN horoscope ON zodiac.ID = horoscope.ID
+			WHERE toy.toynum= :id;";
+
+	$zodiac = pdo($pdo, $sql, ['name' => $sign_id])->fetch();
 	
 	// Check if the cookie 'details_' . $sign is not set
 	if (!isset($_COOKIE['details_' . $sign])) {
@@ -51,26 +59,26 @@
 	    <div class="horoscope-info">
 	        <div class="horoscope-header">
 	        	<!-- Display image of zodiac with its name as alt text -->
-	            <img src="<?= '' ?>" alt="<?= '' ?>">
+	            <img src="<?= $zodiac['imgSrc'] ?>" alt="<?= $zodiac['name'] ?>">
 
 	            <!-- Display name of zodiac sign -->
-	            <h2><?= '' ?></h2>
+	            <h2><?= $zodiac['name'] ?></h2>
 
 	            <!-- Display birthday range of zodiac sign -->
-	            <p><?= '' ?></p>
+	            <p><?= $zodiac['birthday'] ?></p>
 	        </div>
 
 	        <div class="horoscope-ratings">
 	            <h3>Today's Ratings:</h3>
 	            <ul>
 	            	<!-- Call the function in the 'starRating.php' file to generate a star rating based on the mood rating  -->
-	                <li>Mood: <?= '' ?></li>
+	                <li>Mood: <?= generateStarRating($zodiac['moodRating']) ?></li>
 
 	                <!-- Call the function in the 'starRating.php' file to generate a star rating based on the success rating  -->
-	                <li>Success: <?= '' ?></li>
+	                <li>Success: <?= generateStarRating($zodiac['successRating']) ?></li>
 
 	                <!-- Call the function in the 'starRating.php' file to generate a star rating based on the love rating  -->
-	                <li>Love: <?= '' ?></li>
+	                <li>Love: <?= generateStarRating($zodiac['loveRating']) ?></li>
 	            </ul>
 	        </div>
 	    </div>
@@ -80,7 +88,7 @@
 	    <div class="horoscope-description">
 	        <h3>Today's Horoscope:</h3>
 	        <!-- Display the horoscope description -->
-	        <p><?= '' ?></p>
+	        <p><?= $zodiac['description'] ?></p>
 	    </div>
 	</div>			
 </div>
