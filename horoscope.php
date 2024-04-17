@@ -15,13 +15,13 @@
 	 		  Execute the SQL query using the pdo function and fetch the result
 	 */
 
-	 $sign_id = $_GET['name'];
+	 $sign_id = $_GET['sign'];
 
 	 $sql = "SELECT zodiac.name, zodiac.birthday, zodiac.imgSrc,
 	 		horoscope.moodRating, horoscope.successRating, horoscope.loveRating, horoscope.description
 			FROM zodiac
 			JOIN horoscope ON zodiac.ID = horoscope.ID
-			WHERE zodiac.name= :name;";
+			WHERE zodiac.name= :sign;";
 
 	$zodiac = pdo($pdo, $sql, ['name' => $sign_id])->fetch();
 	
